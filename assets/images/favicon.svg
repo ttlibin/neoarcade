@@ -1,0 +1,102 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 渐变定义 -->
+    <linearGradient id="cabinetGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#34495E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2C3E50;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E3A8A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E40AF;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="controlPanelGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498DB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980B9;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 发光效果 -->
+    <filter id="screenGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="buttonGlow">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- 背景阴影 -->
+  <ellipse cx="64" cy="120" rx="45" ry="6" fill="#000" opacity="0.2"/>
+  
+  <!-- 街机机台主体 -->
+  <rect x="20" y="45" width="88" height="75" rx="4" ry="4" fill="url(#cabinetGradient)" stroke="#1A252F" stroke-width="1"/>
+  
+  <!-- 屏幕外框 -->
+  <path d="M 25 15 L 103 15 L 98 45 L 30 45 Z" fill="url(#screenGradient)" stroke="#0F172A" stroke-width="1" rx="2"/>
+  
+  <!-- 屏幕内部 -->
+  <path d="M 30 20 L 98 20 L 93 40 L 35 40 Z" fill="#000" filter="url(#screenGlow)"/>
+  
+  <!-- 屏幕发光边框 -->
+  <path d="M 30 20 L 98 20 L 93 40 L 35 40 Z" fill="none" stroke="#00FFFF" stroke-width="0.5" opacity="0.6"/>
+  
+  <!-- 屏幕内的像素游戏元素 -->
+  <!-- 彩色像素方块代表经典游戏 -->
+  <rect x="40" y="25" width="4" height="4" fill="#FF6B6B" opacity="0.9"/>
+  <rect x="45" y="25" width="4" height="4" fill="#4ECDC4" opacity="0.9"/>
+  <rect x="50" y="25" width="4" height="4" fill="#45B7D1" opacity="0.9"/>
+  <rect x="55" y="25" width="4" height="4" fill="#96CEB4" opacity="0.9"/>
+  
+  <rect x="42" y="30" width="4" height="4" fill="#FFEAA7" opacity="0.9"/>
+  <rect x="47" y="30" width="4" height="4" fill="#DDA0DD" opacity="0.9"/>
+  <rect x="52" y="30" width="4" height="4" fill="#98D8C8" opacity="0.9"/>
+  
+  <rect x="65" y="26" width="3" height="3" fill="#FF7675" opacity="0.8"/>
+  <rect x="69" y="26" width="3" height="3" fill="#74B9FF" opacity="0.8"/>
+  <rect x="73" y="26" width="3" height="3" fill="#00B894" opacity="0.8"/>
+  
+  <rect x="67" y="31" width="3" height="3" fill="#FDCB6E" opacity="0.8"/>
+  <rect x="71" y="31" width="3" height="3" fill="#E17055" opacity="0.8"/>
+  
+  <!-- 经典吃豆人风格的点 -->
+  <circle cx="82" cy="27" r="1.5" fill="#FFFF00" opacity="0.9"/>
+  <circle cx="86" cy="27" r="1.5" fill="#FFFF00" opacity="0.9"/>
+  <circle cx="84" cy="32" r="1.5" fill="#FFFF00" opacity="0.9"/>
+  
+  <!-- 控制面板 -->
+  <rect x="25" y="45" width="78" height="18" fill="url(#controlPanelGradient)" stroke="#2471A3" stroke-width="1"/>
+  
+  <!-- 摇杆底座 -->
+  <circle cx="64" cy="54" r="6" fill="#1B4F72" stroke="#154360" stroke-width="1"/>
+  <circle cx="64" cy="54" r="4" fill="#2E86AB"/>
+  <!-- 摇杆顶部 -->
+  <circle cx="64" cy="52" r="2.5" fill="#F8C471" filter="url(#buttonGlow)"/>
+  
+  <!-- 左侧按钮 -->
+  <circle cx="40" cy="54" r="4" fill="#E74C3C" filter="url(#buttonGlow)" stroke="#C0392B" stroke-width="0.5"/>
+  <circle cx="40" cy="54" r="2.5" fill="#EC7063"/>
+  
+  <!-- 右侧按钮 -->
+  <circle cx="88" cy="54" r="4" fill="#F39C12" filter="url(#buttonGlow)" stroke="#E67E22" stroke-width="0.5"/>
+  <circle cx="88" cy="54" r="2.5" fill="#F7DC6F"/>
+  
+  <!-- 小装饰按钮 -->
+  <circle cx="48" cy="54" r="2" fill="#2ECC71" opacity="0.8"/>
+  <circle cx="80" cy="54" r="2" fill="#9B59B6" opacity="0.8"/>
+  
+  <!-- NEOARCADE 标识 -->
+  <text x="64" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#BDC3C7" opacity="0.8">NEOARCADE</text>
+  
+  <!-- 底部装饰线 -->
+  <rect x="30" y="95" width="68" height="2" fill="#34495E" opacity="0.6" rx="1"/>
+  <rect x="35" y="105" width="58" height="1" fill="#34495E" opacity="0.4" rx="0.5"/>
+</svg> 

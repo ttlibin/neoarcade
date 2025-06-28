@@ -1,0 +1,31 @@
+{
+  "name": "Neo Arcade - Free Online Gaming Portal",
+  "short_name": "Neo Arcade",
+  "description": "Free online gaming portal with modern neon aesthetics and premium arcade games",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#9400d3",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/images/favicon-16.svg",
+      "sizes": "16x16",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/images/favicon-32.svg", 
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "entertainment"],
+  "lang": "en",
+  "dir": "ltr"
+} 

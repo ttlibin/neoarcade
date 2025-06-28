@@ -1,0 +1,2041 @@
+/* ============================================
+   NEO ARCADE - MODERN RETRO NEON MAIN STYLES
+   ============================================ */
+
+/* CSS Variables for Modern Neon Color Palette */
+:root {
+  /* Neon Colors */
+  --neon-pink: #ff1493;
+  --neon-cyan: #00ffff;
+  --neon-purple: #9400d3;
+  --neon-green: #39ff14;
+  --neon-yellow: #ffff00;
+  
+  /* Background Colors */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a2e;
+  --bg-tertiary: #16213e;
+  --bg-card: rgba(20, 20, 50, 0.8);
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8b8;
+  --text-muted: #666666;
+  
+  /* Fonts */
+  --font-primary: 'Orbitron', monospace;
+  --font-secondary: 'Exo 2', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* ============================================
+   GLOBAL RESET & BASE STYLES
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-secondary);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 16px;
+}
+
+/* Remove default list styles */
+ul, ol {
+  list-style: none;
+}
+
+/* Remove default link styles */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-normal);
+}
+
+/* Button reset */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transition-normal);
+}
+
+/* Input reset */
+input, select, textarea {
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
+
+/* ============================================
+   GRID BACKGROUND EFFECT
+   ============================================ */
+
+.grid-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(148, 0, 211, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 0, 211, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridPulse 4s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* ============================================
+   HEADER & NAVIGATION
+   ============================================ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--neon-purple);
+  z-index: 1000;
+  padding: var(--spacing-sm) 0;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 8px var(--neon-purple));
+  transition: var(--transition-normal);
+}
+
+.logo:hover .logo-icon {
+  filter: drop-shadow(0 0 15px var(--neon-cyan));
+  transform: scale(1.1);
+}
+
+.logo-text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-text {
+  font-family: var(--font-primary);
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+.logo-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+  display: block;
+  margin-top: -5px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.nav-link {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-normal);
+}
+
+.nav-link:hover {
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+/* 活动导航链接样式 */
+.nav-link.active {
+  background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
+  color: var(--bg-primary);
+  border-color: transparent;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.5),
+    0 0 30px rgba(255, 20, 147, 0.3);
+  font-weight: 700;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--neon-pink);
+  border-radius: 2px;
+  transition: var(--transition-normal);
+}
+
+/* ============================================
+   GAME CONTROLS SECTION
+   ============================================ */
+
+.game-controls {
+  padding: var(--spacing-lg) var(--spacing-md);
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--neon-purple);
+  border-bottom: 1px solid var(--neon-purple);
+}
+
+.controls-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.search-section {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.search-input {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--neon-cyan);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  min-width: 250px;
+  transition: var(--transition-normal);
+}
+
+.search-input:focus {
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  border-color: var(--neon-cyan);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: transparent;
+  color: var(--neon-cyan);
+  border: 1px solid var(--neon-cyan);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: var(--transition-normal);
+}
+
+.search-button:hover {
+  background: var(--neon-cyan);
+  color: var(--bg-primary);
+}
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.filter-select {
+  padding: var(--spacing-sm);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--neon-purple);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.filter-select:hover,
+.filter-select:focus {
+  border-color: var(--neon-purple);
+  box-shadow: 0 0 10px rgba(148, 0, 211, 0.3);
+}
+
+/* ============================================
+   GAMES SECTION
+   ============================================ */
+
+.games-section {
+  padding: var(--spacing-xl) var(--spacing-md);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.section-title {
+  font-family: var(--font-primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.games-count {
+  color: var(--text-secondary);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Games Grid */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  justify-content: center;
+  padding: 0 var(--spacing-sm);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.game-card {
+  background: var(--bg-card);
+  border: 1px solid var(--neon-cyan);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-normal);
+  cursor: pointer;
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.game-card:hover {
+  transform: translateY(-8px) translateZ(0) scale(1.02);
+  box-shadow: 
+    0 15px 40px rgba(0, 255, 255, 0.4),
+    0 0 30px rgba(255, 20, 147, 0.3);
+  border-color: var(--neon-pink);
+}
+
+/* 为游戏卡片添加点击提示效果 */
+.game-card::after {
+  content: '🎮 Click to Play';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: var(--neon-cyan);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 10;
+  border: 1px solid var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.game-card:hover::after {
+  opacity: 1;
+}
+
+.game-thumbnail {
+  width: 100%;
+  height: 200px;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  min-height: 200px;
+  max-height: 200px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.game-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+  border-radius: var(--radius-sm);
+  image-rendering: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-quality;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  min-width: 100%;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  will-change: transform;
+  filter: contrast(1.25) brightness(1.2) saturate(1.25);
+  opacity: 1;
+}
+
+.game-thumbnail:hover img {
+  transform: scale(1.05) translateZ(0);
+}
+
+.loading-placeholder .game-thumbnail {
+  background: linear-gradient(45deg, #333, #555);
+  animation: pulse 2s ease-in-out infinite;
+  min-height: 200px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.game-info {
+  padding: var(--spacing-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.game-title {
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+  letter-spacing: 1px;
+}
+
+.game-description {
+  margin-bottom: 25px;
+}
+
+.game-description h3.game-name {
+  margin: 0 0 15px 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.game-description p {
+  margin: 15px 0 0 0;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.game-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.game-rating, .game-likes {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Load More Section */
+.load-more-section {
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+}
+
+.load-more-button {
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: transparent;
+  color: var(--neon-green);
+  border: 2px solid var(--neon-green);
+  border-radius: var(--radius-lg);
+  transition: var(--transition-normal);
+  text-transform: uppercase;
+}
+
+.load-more-button:hover {
+  background: var(--neon-green);
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+  background: var(--bg-secondary);
+  border-top: 2px solid var(--neon-purple);
+  padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.footer-title {
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: var(--spacing-sm);
+  color: var(--neon-cyan);
+}
+
+.footer-text {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  transition: var(--transition-normal);
+}
+
+.footer-links a:hover {
+  color: var(--neon-pink);
+  padding-left: var(--spacing-xs);
+}
+
+.social-links {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.social-link {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--neon-purple);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: var(--transition-normal);
+}
+
+.social-link:hover {
+  border-color: var(--neon-pink);
+  color: var(--neon-pink);
+  box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--bg-tertiary);
+  color: var(--text-muted);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+
+/* ============================================
+   NOTIFICATION SYSTEM
+   ============================================ */
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(10, 10, 10, 0.95);
+  border: 2px solid var(--neon-cyan);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  color: var(--neon-cyan);
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  z-index: 10000;
+  max-width: 300px;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   NO GAMES STATE
+   ============================================ */
+
+.no-games {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--spacing-xl);
+  background: rgba(255, 255, 255, 0.02);
+  border: 2px dashed var(--neon-purple);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.no-games-icon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.5;
+}
+
+.no-games h3 {
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.5rem;
+}
+
+.no-games p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+
+body:not(.loaded) .game-card {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+body:not(.loaded) .game-title {
+  opacity: 0;
+  animation: titleSlideIn 1s ease 0.5s forwards;
+}
+
+@keyframes titleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   SCROLLED HEADER
+   ============================================ */
+
+.header.scrolled {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 2px 20px rgba(255, 20, 147, 0.3);
+}
+
+.header.scrolled .logo-text {
+  font-size: 1.8rem;
+}
+
+.header.scrolled .logo-subtitle {
+  opacity: 0.8;
+}
+
+/* ============================================
+   USER RATING DISPLAY
+   ============================================ */
+
+.user-rating {
+  margin-top: var(--spacing-xs);
+  padding: var(--spacing-xs);
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--neon-cyan);
+  border-left: 3px solid var(--neon-cyan);
+}
+
+/* ============================================
+   FEATURED BADGE
+   ============================================ */
+
+.featured-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--neon-pink);
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px var(--neon-pink);
+  animation: featuredPulse 2s infinite;
+}
+
+@keyframes featuredPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--neon-pink);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink);
+  }
+}
+
+/* ============================================
+   TAG STYLES
+   ============================================ */
+
+.game-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+}
+
+.tag {
+  background: rgba(218, 112, 214, 0.2);
+  color: var(--neon-purple);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  border: 1px solid var(--neon-purple);
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: rgba(218, 112, 214, 0.3);
+  box-shadow: 0 0 5px var(--neon-purple);
+}
+
+/* ============================================
+   FAVORITE BUTTON IMPROVEMENTS
+   ============================================ */
+
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  backdrop-filter: blur(5px);
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.favorite-btn.favorited {
+  animation: heartBeat 0.5s ease;
+}
+
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* ============================================
+   RESPONSIVE IMPROVEMENTS
+   ============================================ */
+
+@media screen and (max-width: 480px) {
+  .notification {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+  
+  .no-games-icon {
+    font-size: 3rem;
+  }
+  
+  .featured-badge {
+    font-size: 0.6rem;
+    padding: 3px 6px;
+  }
+  
+  .tag {
+    font-size: 0.7rem;
+  }
+  
+  .games-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-game-section {
+    padding: 100px 0 var(--spacing-lg);
+  }
+  
+  .game-details h3.game-name {
+    font-size: 1.6rem;
+  }
+  
+  .game-frame-container {
+    height: 300px;
+  }
+  
+  .game-info-sidebar {
+    padding: var(--spacing-md);
+  }
+  
+  /* Games Grid - 平板尺寸显示2列 */
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .game-frame-container {
+    height: 350px;
+  }
+  
+  .game-info-sidebar {
+    order: 2;
+  }
+  
+  .game-main-area {
+    order: 1;
+  }
+  
+  /* 移除这里的games-grid规则，让默认的3列生效 */
+}
+
+/* ============================================
+   MEDIUM TO LARGE DEVICES (993px to 1199px)
+   ============================================ */
+
+@media screen and (min-width: 993px) and (max-width: 1199px) {
+  /* Games Grid - 中等桌面尺寸仍然显示3列 */
+  .games-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    justify-content: center;
+    max-width: 1000px;
+  }
+}
+
+/* ============================================
+   LARGE DEVICES (desktops, 1200px and up)
+   ============================================ */
+
+@media screen and (min-width: 1200px) {
+  /* Games Grid */
+  .games-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   EXTRA LARGE DEVICES (large desktops, 1400px and up)
+   ============================================ */
+
+@media screen and (min-width: 1400px) {
+  /* Games Grid */
+  .games-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+    justify-content: center;
+    max-width: 1400px;
+  }
+}
+
+/* ============================================
+   NEON TEXT EFFECTS
+   ============================================ */
+
+.neon-text {
+  color: #ffffff;
+  text-shadow: 
+    0 0 5px var(--neon-pink),
+    0 0 10px var(--neon-pink),
+    0 0 15px var(--neon-pink),
+    0 0 20px var(--neon-pink),
+    0 0 35px var(--neon-pink),
+    0 0 40px var(--neon-pink);
+  animation: neonFlicker 2s infinite alternate;
+}
+
+@keyframes neonFlicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    color: #ffffff;
+    text-shadow: 
+      0 0 5px var(--neon-pink),
+      0 0 10px var(--neon-pink),
+      0 0 15px var(--neon-pink),
+      0 0 20px var(--neon-pink),
+      0 0 35px var(--neon-pink),
+      0 0 40px var(--neon-pink);
+  }
+  
+  20%, 24%, 55% {
+    color: #ffffff;
+    text-shadow: 
+      0 0 2px var(--neon-pink),
+      0 0 5px var(--neon-pink),
+      0 0 8px var(--neon-pink),
+      0 0 12px var(--neon-pink);
+  }
+}
+
+/* 特别为游戏名称增强发光效果 */
+.game-details h3.game-name.neon-text {
+  color: #ffffff;
+  font-family: var(--font-primary);
+  font-weight: 900;
+  text-shadow: 
+    0 0 5px var(--neon-pink),
+    0 0 10px var(--neon-pink),
+    0 0 15px var(--neon-pink),
+    0 0 20px var(--neon-pink),
+    0 0 30px var(--neon-pink),
+    0 0 40px var(--neon-pink),
+    0 0 50px var(--neon-pink),
+    0 0 60px var(--neon-pink);
+  animation: gameNameIntensePulse 2s ease-in-out infinite alternate;
+  position: relative;
+  filter: brightness(1.2);
+}
+
+@keyframes gameNameIntensePulse {
+  0% {
+    color: #ffffff;
+    text-shadow: 
+      0 0 5px var(--neon-pink),
+      0 0 10px var(--neon-pink),
+      0 0 15px var(--neon-pink),
+      0 0 20px var(--neon-pink),
+      0 0 30px var(--neon-pink),
+      0 0 40px var(--neon-pink);
+  }
+  
+  100% {
+    color: #ffffff;
+    text-shadow: 
+      0 0 10px var(--neon-pink),
+      0 0 20px var(--neon-pink),
+      0 0 30px var(--neon-pink),
+      0 0 40px var(--neon-pink),
+      0 0 50px var(--neon-pink),
+      0 0 60px var(--neon-pink),
+      0 0 70px var(--neon-pink),
+      0 0 80px var(--neon-pink);
+  }
+}
+
+/* 右侧游戏区域的游戏名称 */
+.game-name-overlay.neon-text {
+  color: #ffffff;
+  font-family: var(--font-primary);
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+  text-shadow: 
+    0 0 10px var(--neon-pink),
+    0 0 20px var(--neon-pink),
+    0 0 30px var(--neon-pink),
+    0 0 40px var(--neon-pink),
+    0 0 50px var(--neon-pink),
+    0 0 60px var(--neon-pink),
+    0 0 70px var(--neon-pink);
+  animation: gameNameOverlayIntense 2.5s ease-in-out infinite alternate;
+  filter: brightness(1.3);
+}
+
+@keyframes gameNameOverlayIntense {
+  0% {
+    color: #ffffff;
+    text-shadow: 
+      0 0 10px var(--neon-pink),
+      0 0 20px var(--neon-pink),
+      0 0 30px var(--neon-pink),
+      0 0 40px var(--neon-pink),
+      0 0 50px var(--neon-pink);
+  }
+  
+  100% {
+    color: #ffffff;
+    text-shadow: 
+      0 0 15px var(--neon-pink),
+      0 0 25px var(--neon-pink),
+      0 0 35px var(--neon-pink),
+      0 0 45px var(--neon-pink),
+      0 0 60px var(--neon-pink),
+      0 0 75px var(--neon-pink),
+      0 0 90px var(--neon-pink),
+      0 0 100px var(--neon-pink);
+  }
+}
+
+/* 为统计数字也添加发光效果 */
+.stat-number.neon-text {
+  color: #ffffff;
+  text-shadow: 
+    0 0 5px var(--neon-green),
+    0 0 10px var(--neon-green),
+    0 0 15px var(--neon-green),
+    0 0 20px var(--neon-green),
+    0 0 25px var(--neon-green),
+    0 0 30px var(--neon-green);
+  animation: statGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes statGlow {
+  0% {
+    color: #ffffff;
+    text-shadow: 
+      0 0 5px var(--neon-green),
+      0 0 10px var(--neon-green),
+      0 0 15px var(--neon-green),
+      0 0 20px var(--neon-green);
+  }
+  
+  100% {
+    color: #ffffff;
+    text-shadow: 
+      0 0 8px var(--neon-green),
+      0 0 15px var(--neon-green),
+      0 0 25px var(--neon-green),
+      0 0 35px var(--neon-green),
+      0 0 45px var(--neon-green);
+  }
+}
+
+/* 为logo文字添加发光效果 */
+.logo-text.neon-text {
+  color: #ffffff;
+  text-shadow: 
+    0 0 10px var(--neon-pink),
+    0 0 20px var(--neon-pink),
+    0 0 30px var(--neon-pink),
+    0 0 40px var(--neon-pink);
+  animation: logoGlow 4s ease-in-out infinite alternate;
+  filter: brightness(1.1);
+}
+
+@keyframes logoGlow {
+  0% {
+    color: #ffffff;
+    text-shadow: 
+      0 0 10px var(--neon-pink),
+      0 0 20px var(--neon-pink),
+      0 0 30px var(--neon-pink);
+  }
+  
+  100% {
+    color: #ffffff;
+    text-shadow: 
+      0 0 15px var(--neon-pink),
+      0 0 25px var(--neon-pink),
+      0 0 35px var(--neon-pink),
+      0 0 45px var(--neon-pink),
+      0 0 55px var(--neon-pink);
+  }
+}
+
+/* Neon Button 样式 */
+.neon-button {
+  background: transparent;
+  color: var(--neon-cyan);
+  border: 2px solid var(--neon-cyan);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.3),
+    inset 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+.neon-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.neon-button:hover::before {
+  left: 100%;
+}
+
+.neon-button:hover {
+  color: var(--bg-primary);
+  background: var(--neon-cyan);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.6),
+    0 0 40px rgba(0, 255, 255, 0.4),
+    inset 0 0 20px rgba(0, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* 导航栏全屏按钮 */
+.nav-fullscreen-btn {
+  background: transparent;
+  color: var(--neon-cyan);
+  border: 1px solid var(--neon-cyan);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-fullscreen-btn:hover {
+  background: var(--neon-cyan);
+  color: var(--bg-primary);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   FAVORITES SECTION
+   ============================================ */
+
+.favorites-section {
+  padding: var(--spacing-xl) 0;
+  background: var(--bg-primary);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.no-favorites {
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: var(--spacing-xl);
+  background: rgba(20, 20, 40, 0.8);
+  border: 2px solid var(--neon-purple);
+  border-radius: 15px;
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.no-favorites-icon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.no-favorites h3 {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-primary);
+}
+
+.no-favorites p {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.favorites-count {
+  color: var(--neon-green);
+  font-weight: 600;
+}
+
+/* ============================================
+   LEADERBOARD SECTION
+   ============================================ */
+
+.leaderboard-section {
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(30, 30, 50, 0.9), rgba(50, 30, 80, 0.7));
+  border-radius: 20px;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.leaderboard-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.leaderboard-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 255, 255, 0.1);
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.tab-button:hover,
+.tab-button.active {
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.leaderboard-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.leaderboard-table {
+  background: rgba(20, 20, 40, 0.8);
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 60px 1fr 100px 100px;
+  gap: 1rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+  font-weight: bold;
+  color: #ffffff;
+  border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+}
+
+.table-body {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.leaderboard-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 100px 100px;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  color: #ffffff;
+}
+
+.leaderboard-row:hover {
+  background: rgba(0, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.leaderboard-row:nth-child(1) {
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.2), transparent);
+  border-left: 4px solid #ffd700;
+}
+
+.leaderboard-row:nth-child(2) {
+  background: linear-gradient(90deg, rgba(192, 192, 192, 0.2), transparent);
+  border-left: 4px solid #c0c0c0;
+}
+
+.leaderboard-row:nth-child(3) {
+  background: linear-gradient(90deg, rgba(205, 127, 50, 0.2), transparent);
+  border-left: 4px solid #cd7f32;
+}
+
+.rank-col {
+  text-align: center;
+  font-weight: bold;
+  color: #00ffff;
+}
+
+.player-col {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.score-col {
+  text-align: right;
+  color: #ff6b9d;
+  font-weight: bold;
+}
+
+.date-col {
+  text-align: right;
+  color: #a0a0a0;
+  font-size: 0.9rem;
+}
+
+.leaderboard-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stat-card {
+  background: rgba(20, 20, 40, 0.8);
+  padding: 1.5rem;
+  border-radius: 15px;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
+}
+
+.stat-card h4 {
+  margin: 0 0 0.5rem 0;
+  color: #ffffff;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.stat-card span {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.stat-card small {
+  color: #a0a0a0;
+  font-size: 0.8rem;
+}
+
+.your-score {
+  color: #ff6b9d;
+}
+
+.games-played {
+  color: #00ffff;
+}
+
+.total-players {
+  color: #c77dff;
+}
+
+/* Responsive Design for Leaderboard */
+@media (max-width: 768px) {
+  .leaderboard-section {
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
+  .leaderboard-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .leaderboard-stats {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  
+  .stat-card {
+    min-width: 150px;
+    flex-shrink: 0;
+  }
+  
+  .table-header,
+  .leaderboard-row {
+    grid-template-columns: 50px 1fr 80px 80px;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .leaderboard-tabs {
+    justify-content: center;
+  }
+  
+  .tab-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+.loading-spinner {
+  font-size: 3rem;
+  animation: spin 2s linear infinite;
+  margin: 20px 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.overlay-content p {
+  color: var(--text-secondary);
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+/* ============================================
+   主游戏区域 - 作为首页
+   ============================================ */
+
+.main-game-section {
+  min-height: 100vh;
+  padding: 120px 0 var(--spacing-xl);
+  background: linear-gradient(
+    135deg,
+    rgba(20, 0, 40, 0.95) 0%,
+    rgba(40, 0, 80, 0.9) 50%,
+    rgba(20, 0, 40, 0.95) 100%
+  );
+  position: relative;
+  border-bottom: 2px solid var(--neon-purple);
+}
+
+.main-game-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ff14930a" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  pointer-events: none;
+  z-index: 1;
+}
+
+.game-section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  position: relative;
+  z-index: 2;
+}
+
+/* 游戏布局 - 左侧边栏 + 主游戏区 */
+.game-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* 左侧游戏信息边栏 */
+.game-info-sidebar {
+  flex: 0 0 350px;
+  background: rgba(20, 20, 40, 0.95);
+  border: 2px solid var(--neon-purple);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 
+      0 0 20px rgba(148, 0, 211, 0.3),
+      inset 0 0 20px rgba(148, 0, 211, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+}
+
+.game-details {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.game-details h3.game-name {
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.game-category-badge {
+  background: rgba(255, 20, 147, 0.2);
+  border: 1px solid var(--neon-pink);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: 15px;
+  font-size: 0.9rem;
+  color: var(--neon-pink);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  display: block;
+}
+
+.game-description,
+.game-controls-guide,
+.game-rating-display {
+  margin-bottom: var(--spacing-md);
+}
+
+.game-description h4,
+.game-controls-guide h4,
+.game-rating-display h4 {
+  color: var(--neon-cyan);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.game-description p {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+/* 控制指南 */
+.control-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(148, 0, 211, 0.2);
+}
+
+.control-item:last-child {
+  border-bottom: none;
+}
+
+.control-key {
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid var(--neon-cyan);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--neon-cyan);
+  font-weight: 600;
+  font-family: monospace;
+}
+
+.control-desc {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+/* 评分显示 */
+.rating-stars {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: 4px;
+}
+
+.rating-stars .stars {
+  color: var(--neon-yellow);
+  font-size: 1.1rem;
+  text-shadow: 0 0 10px var(--neon-yellow);
+}
+
+.rating-number {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.rating-count {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* 主游戏区域 */
+.game-main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+}
+
+.game-frame-container {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background: #000;
+  border: 2px solid var(--neon-cyan);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.3),
+    inset 0 0 10px rgba(0, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.game-frame-container:hover {
+  border-color: var(--neon-pink);
+  box-shadow: 
+    0 0 30px rgba(255, 20, 147, 0.5),
+    0 0 40px rgba(0, 255, 255, 0.3),
+    inset 0 0 15px rgba(255, 20, 147, 0.1);
+  transform: scale(1.01);
+}
+
+.game-frame-container:hover .overlay-content h4 {
+  color: var(--neon-pink);
+  text-shadow: 
+    0 0 10px var(--neon-pink),
+    0 0 20px var(--neon-pink),
+    0 0 30px var(--neon-pink);
+}
+
+.main-game-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #000;
+}
+
+/* 主游戏区域的overlay - 应该正常显示 */
+.main-game-section .game-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 10, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  /* 主游戏区域overlay正常显示 */
+  opacity: 1;
+  pointer-events: all;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* 游戏卡片中的overlay - 保持隐藏 */
+.game-card .game-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 10, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  /* 游戏卡片overlay完全隐藏 */
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+
+/* 移除游戏卡片悬停时显示overlay的效果 */
+.game-card:hover .game-overlay {
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+
+.game-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+
+.overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  width: 90%;
+}
+
+.overlay-content h4 {
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.game-preview-info {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 20, 147, 0.1);
+  border: 1px solid var(--neon-pink);
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+}
+
+.game-preview-info p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.game-preview-info p:hover {
+  color: var(--neon-pink);
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+/* Hero Stats - 现在在游戏区域内 */
+.hero-stats {
+  display: flex;
+  gap: var(--spacing-xl);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--spacing-lg);
+}
+
+.stat-item {
+  text-align: center;
+  padding: var(--spacing-md);
+  border: 1px solid var(--neon-purple);
+  border-radius: var(--radius-md);
+  background: rgba(148, 0, 211, 0.1);
+  min-width: 120px;
+}
+
+.stat-number {
+  font-family: var(--font-primary);
+  font-size: 2rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 480px) {
+  .game-frame-container {
+    height: 250px;
+  }
+  
+  .game-details h3.game-name {
+    font-size: 1.4rem;
+  }
+  
+  .hero-stats {
+    gap: var(--spacing-md);
+  }
+  
+  .stat-item {
+    min-width: 100px;
+    padding: var(--spacing-sm);
+  }
+}
+
+.game-card-image {
+  display: block;
+  background-color: transparent;
+  image-rendering: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-quality;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+  filter: contrast(1.15) brightness(1.1) saturate(1.15);
+}
+
+.game-card-image[src*="placeholder"] {
+  object-fit: contain !important;
+  background-color: var(--neon-purple) !important;
+  padding: 20px;
+  filter: contrast(1.3) brightness(1.2) saturate(1.2);
+  image-rendering: auto;
+}
+
+.game-card-image[loading] {
+  background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+  min-height: 200px;
+  image-rendering: auto;
+  will-change: transform;
+}
+
+.game-card-image:not([loading]) {
+  image-rendering: auto !important;
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: optimize-quality !important;
+  filter: contrast(1.12) brightness(1.08) saturate(1.18) blur(0px) !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.loading-placeholder .game-thumbnail {
+  background: linear-gradient(45deg, #333, #555);
+  animation: pulse 2s ease-in-out infinite;
+  min-height: 200px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* 高分辨率屏幕超级优化 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .game-thumbnail img {
+    image-rendering: auto !important;
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: optimize-quality !important;
+    filter: contrast(1.15) brightness(1.1) saturate(1.2) !important;
+  }
+  
+  .game-card-image:not([loading]) {
+    filter: contrast(1.18) brightness(1.12) saturate(1.25) !important;
+  }
+}
+
+/* 4K和更高分辨率优化 */
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+  .game-thumbnail img,
+  .game-card-image:not([loading]) {
+    image-rendering: auto !important;
+    image-rendering: optimize-quality !important;
+    filter: contrast(1.2) brightness(1.15) saturate(1.3) sharpen(1.5px) !important;
+  }
+}
+
+/* 确保游戏卡片尺寸一致且清晰 */
+.game-card {
+  background: var(--bg-card);
+  border: 1px solid var(--neon-cyan);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-normal);
+  cursor: pointer;
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.game-card:hover {
+  transform: translateY(-8px) translateZ(0) scale(1.02);
+  box-shadow: 
+    0 15px 40px rgba(0, 255, 255, 0.4),
+    0 0 30px rgba(255, 20, 147, 0.3);
+  border-color: var(--neon-pink);
+}
+
+/* 游戏信息区域优化 */
+.game-info {
+  padding: var(--spacing-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 游戏卡片中的播放按钮样式优化 */
+.game-overlay .play-button {
+  background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
+  color: #000;
+  border: 2px solid transparent;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: 10px;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.5),
+    0 0 30px rgba(255, 20, 147, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.game-overlay .play-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+.game-overlay .play-button:hover::before {
+  left: 100%;
+}
+
+.game-overlay .play-button:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.8),
+    0 0 40px rgba(255, 20, 147, 0.6);
+} 

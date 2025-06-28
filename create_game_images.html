@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏图片生成器 - Neo Arcade</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #ff1493;
+            text-shadow: 0 0 10px #ff1493;
+            margin-bottom: 30px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .game-image {
+            width: 280px;
+            height: 180px;
+            background: linear-gradient(45deg, #16213e, #0f3460);
+            border: 2px solid #00ffff;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .game-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.5);
+            border-color: #ff1493;
+        }
+        .game-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 5px #00ffff;
+            margin-bottom: 10px;
+        }
+        .game-category {
+            font-size: 12px;
+            color: #ff1493;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .download-btn {
+            background: linear-gradient(45deg, #ff1493, #00ffff);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+        }
+        .instructions {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #00ffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 NEO ARCADE 游戏图片生成器</h1>
+        
+        <div class="instructions">
+            <h3>使用说明：</h3>
+            <p>1. 点击下面的任意游戏图片来下载</p>
+            <p>2. 将下载的图片放入 <code>images/</code> 文件夹</p>
+            <p>3. 图片文件名已自动匹配游戏数据中的缩略图路径</p>
+            <p>4. 所有图片都是280x180像素，适合您的网站布局</p>
+        </div>
+
+        <div class="image-grid" id="imageGrid">
+            <!-- 图片将通过JavaScript生成 -->
+        </div>
+
+        <button class="download-btn" onclick="downloadAllImages()">📥 下载所有图片</button>
+    </div>
+
+    <script>
+        const games = [
+            {slug: "firestone-idle-rpg", title: "FIRESTONE IDLE RPG", category: "ACTION"},
+            {slug: "heroes-of-war", title: "HEROES OF WAR", category: "ACTION"},
+            {slug: "melon-sandbox", title: "MELON SANDBOX", category: "ACTION"},
+            {slug: "hero-zero", title: "HERO ZERO", category: "ACTION"},
+            {slug: "battle-arena-heroes", title: "BATTLE ARENA HEROES", category: "ACTION"},
+            {slug: "call-of-war", title: "CALL OF WAR", category: "ACTION"},
+            {slug: "we-are-warriors", title: "WE ARE WARRIORS", category: "ACTION"},
+            {slug: "raid-heroes-dark-side", title: "RAID HEROES: DARK SIDE", category: "ACTION"},
+            {slug: "brawl-stars-battle", title: "BRAWL STARS BATTLE", category: "ACTION"},
+            {slug: "crazy-zombie-9", title: "CRAZY ZOMBIE 9", category: "ACTION"},
+            {slug: "survev-io", title: "SURVEV.IO BATTLE ROYALE", category: "SHOOTER"},
+            {slug: "hazmob-fps", title: "HAZMOB FPS SHOOTER", category: "SHOOTER"},
+            {slug: "shell-shockers", title: "SHELL SHOCKERS", category: "SHOOTER"},
+            {slug: "fps-toy-realism", title: "FPS TOY REALISM", category: "SHOOTER"},
+            {slug: "rail-hunt", title: "RAIL HUNT", category: "SHOOTER"},
+            {slug: "mario-kart-64", title: "MARIO KART 64", category: "RACING"},
+            {slug: "super-mario-kart", title: "SUPER MARIO KART", category: "RACING"},
+            {slug: "cars-3d", title: "CARS 3D", category: "RACING"},
+            {slug: "formula-speed", title: "FORMULA SPEED", category: "RACING"},
+            {slug: "minecraft", title: "MINECRAFT", category: "ADVENTURE"},
+            {slug: "fireboy-watergirl", title: "FIREBOY AND WATERGIRL", category: "ADVENTURE"},
+            {slug: "super-mario-bros", title: "SUPER MARIO BROS", category: "ADVENTURE"},
+            {slug: "pokemon-quetzal", title: "POKEMON QUETZAL", category: "ADVENTURE"},
+            {slug: "tetris-classic", title: "TETRIS", category: "PUZZLE"},
+            {slug: "2048", title: "2048", category: "PUZZLE"},
+            {slug: "tekken-3", title: "TEKKEN 3", category: "FIGHTING"},
+            {slug: "street-fighter-2", title: "STREET FIGHTER II", category: "FIGHTING"},
+            {slug: "mortal-kombat", title: "MORTAL KOMBAT", category: "FIGHTING"},
+            {slug: "dragon-ball-z", title: "DRAGON BALL Z FIGHTER", category: "FIGHTING"},
+            {slug: "among-us", title: "AMONG US", category: "ADVENTURE"},
+            {slug: "fall-guys", title: "FALL GUYS", category: "ACTION"},
+            {slug: "rocket-league", title: "ROCKET LEAGUE", category: "RACING"}
+        ];
+
+        function createGameImage(game) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 280;
+            canvas.height = 180;
+            const ctx = canvas.getContext('2d');
+
+            // 背景渐变
+            const gradient = ctx.createLinearGradient(0, 0, 280, 180);
+            gradient.addColorStop(0, '#16213e');
+            gradient.addColorStop(1, '#0f3460');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 280, 180);
+
+            // 边框
+            ctx.strokeStyle = '#00ffff';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(1, 1, 278, 178);
+
+            // 游戏标题
+            ctx.fillStyle = '#00ffff';
+            ctx.font = 'bold 16px "Courier New"';
+            ctx.textAlign = 'center';
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 10;
+            ctx.fillText(game.title, 140, 90);
+
+            // 类别标签
+            ctx.fillStyle = '#ff1493';
+            ctx.font = '12px "Courier New"';
+            ctx.shadowColor = '#ff1493';
+            ctx.shadowBlur = 5;
+            ctx.fillText(game.category, 140, 110);
+
+            // 装饰元素
+            ctx.strokeStyle = '#ff1493';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(40, 130);
+            ctx.lineTo(240, 130);
+            ctx.stroke();
+
+            return canvas;
+        }
+
+        function downloadImage(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        function generateImages() {
+            const grid = document.getElementById('imageGrid');
+            
+            games.forEach(game => {
+                const container = document.createElement('div');
+                container.className = 'game-image';
+                
+                const title = document.createElement('div');
+                title.className = 'game-title';
+                title.textContent = game.title;
+                
+                const category = document.createElement('div');
+                category.className = 'game-category';
+                category.textContent = game.category;
+                
+                container.appendChild(title);
+                container.appendChild(category);
+                
+                container.addEventListener('click', () => {
+                    const canvas = createGameImage(game);
+                    downloadImage(canvas, `${game.slug}.jpg`);
+                });
+                
+                grid.appendChild(container);
+            });
+        }
+
+        function downloadAllImages() {
+            games.forEach((game, index) => {
+                setTimeout(() => {
+                    const canvas = createGameImage(game);
+                    downloadImage(canvas, `${game.slug}.jpg`);
+                }, index * 500); // 每500ms下载一个图片
+            });
+        }
+
+        // 页面加载时生成图片
+        window.onload = generateImages;
+    </script>
+</body>
+</html> 

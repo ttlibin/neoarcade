@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Neo Arcade - Free online gaming portal with modern neon aesthetics and premium arcade games">
+    <meta name="keywords" content="neo arcade, free games, online games, neon arcade, free gaming portal, arcade games">
+    <meta name="author" content="Neo Arcade">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Neo Arcade - Free Online Gaming Portal">
+    <meta property="og:description" content="Free online gaming portal with modern neon aesthetics and premium arcade games">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neoarcade.online">
+    
+    <title>Neo Arcade - Free Online Gaming Portal</title>
+    
+    <!-- Google Fonts for Modern Retro Look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/neon-effects.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="assets/images/favicon-32.svg">
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="assets/images/favicon-16.svg">
+    <!-- Fallback for older browsers -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Progressive Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#9400d3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+    <!-- Background Grid Effect -->
+    <div class="grid-background"></div>
+    
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <img src="assets/images/favicon-32.svg" alt="Neo Arcade" class="logo-icon">
+                <div class="logo-text-container">
+                    <h1 class="logo-text neon-text">NEO ARCADE</h1>
+                    <span class="logo-subtitle">Free Online Gaming</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">HOME</a></li>
+                <li><a href="#games" class="nav-link">GAMES</a></li>
+                <li><a href="#favorites" class="nav-link">FAVORITES</a></li>
+                <li><a href="#leaderboard" class="nav-link">LEADERBOARD</a></li>
+                <li><button class="nav-fullscreen-btn" onclick="toggleMainGameFullscreen()">
+                    <i class="fas fa-expand"></i> FULLSCREEN
+                </button></li>
+            </ul>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Game Section - Direct Homepage -->
+    <section class="main-game-section" id="home">
+      <div class="game-section-container">
+        <div class="game-layout">
+          <!-- Left Sidebar - Game Information -->
+          <div class="game-info-sidebar">
+            <div class="game-details">
+              
+              <div class="game-description">
+                <h3 class="game-name neon-text">SUBWAY SURFERS</h3>
+                <p>Experience the ultimate subway running adventure with stunning graphics. Navigate through obstacles, collect power-ups, and achieve the highest score in this fast-paced urban adventure.</p>
+              </div>
+              
+              <div class="game-controls-guide">
+                <h4>How to Play</h4>
+                <div class="control-item">
+                  <span class="control-key">↑↓ ARROWS</span>
+                  <span class="control-desc">Move Up/Down</span>
+                </div>
+                <div class="control-item">
+                  <span class="control-key">SPACE</span>
+                  <span class="control-desc">Boost Speed</span>
+                </div>
+                <div class="control-item">
+                  <span class="control-key">ESC</span>
+                  <span class="control-desc">Pause Game</span>
+                </div>
+              </div>
+              
+              <div class="game-rating-display">
+                <h4>Rating</h4>
+                <div class="rating-stars">
+                  <span class="stars">★★★★★</span>
+                  <span class="rating-number">4.8/5</span>
+                </div>
+                <div class="rating-count">Based on 1,247 reviews</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Main Game Area -->
+          <div class="game-main-area">
+            <div class="game-frame-container" onclick="startMainGame()">
+              <iframe class="main-game-iframe" 
+                      src="" 
+                      frameborder="0" 
+                      allowfullscreen
+                      style="background-image: url('assets/images/subway-surfers.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;"></iframe>
+              <div class="game-overlay">
+                <div class="overlay-content">
+                  <h4 class="neon-text">CLICK TO START GAME</h4>
+                  <button class="neon-button play-overlay-btn" onclick="startMainGame()">
+                    ▶ START GAME
+                  </button>
+                  <div class="game-preview-info">
+                    <p>🎮 Ready to surf the subway?</p>
+                    <p>🏃‍♂️ Dodge trains and collect coins!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Game Filter and Search Section -->
+    <section class="game-controls">
+        <div class="controls-container">
+            <div class="search-section">
+                <input type="text" id="game-search" class="search-input neon-input" placeholder="Search games...">
+                <button class="search-button neon-button">SEARCH</button>
+            </div>
+            
+            <div class="filter-section">
+                <label for="category-filter" class="filter-label">CATEGORY:</label>
+                <select id="category-filter" class="filter-select neon-select">
+                    <option value="all">ALL GAMES</option>
+                    <option value="action">ACTION</option>
+                    <option value="shooter">SHOOTER</option>
+                    <option value="racing">RACING</option>
+                    <option value="adventure">ADVENTURE</option>
+                    <option value="puzzle">PUZZLE</option>
+                    <option value="fighting">FIGHTING</option>
+                </select>
+                
+                <label for="sort-filter" class="filter-label">SORT BY:</label>
+                <select id="sort-filter" class="filter-select neon-select">
+                    <option value="popular">MOST POPULAR</option>
+                    <option value="rating">HIGHEST RATED</option>
+                    <option value="newest">NEWEST</option>
+                    <option value="name">NAME A-Z</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Grid Section -->
+    <main class="games-section" id="games">
+        <div class="section-header">
+            <h3 class="section-title neon-text">FEATURED GAMES</h3>
+            <span class="games-count">Loading games...</span>
+        </div>
+        
+        <div class="games-grid" id="games-grid">
+            <!-- Game cards will be dynamically inserted here -->
+        </div>
+        
+        <div class="load-more-section">
+            <button class="load-more-button neon-button">LOAD MORE GAMES</button>
+        </div>
+    </main>
+
+    <!-- Favorites Section -->
+    <section class="favorites-section" id="favorites">
+        <div class="section-header">
+            <h3 class="section-title neon-text">MY FAVORITES</h3>
+            <span class="favorites-count">0 favorite games</span>
+        </div>
+        
+        <div class="favorites-grid" id="favorites-grid">
+            <div class="no-favorites">
+                <div class="no-favorites-icon">💖</div>
+                <h3>No favorite games yet!</h3>
+                <p>Click the heart icon on any game to add it to your favorites</p>
+                <button class="neon-button" onclick="showSection('games')">BROWSE GAMES</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section class="leaderboard-section" id="leaderboard">
+        <div class="section-header">
+            <h3 class="section-title neon-text">LEADERBOARD</h3>
+            <span class="leaderboard-subtitle">Top Players & High Scores</span>
+        </div>
+        
+        <div class="leaderboard-container">
+            <div class="leaderboard-tabs">
+                <button class="tab-button active" data-game="subway-surfers">SUBWAY SURFERS</button>
+                <button class="tab-button" data-game="space-invaders">SPACE INVADERS</button>
+                <button class="tab-button" data-game="pac-man">PAC-MAN</button>
+                <button class="tab-button" data-game="overall">OVERALL</button>
+            </div>
+            
+            <div class="leaderboard-content">
+                <div class="leaderboard-table">
+                    <div class="table-header">
+                        <div class="rank-col">RANK</div>
+                        <div class="player-col">PLAYER</div>
+                        <div class="score-col">SCORE</div>
+                        <div class="date-col">DATE</div>
+                    </div>
+                    
+                    <div class="table-body" id="leaderboard-data">
+                        <!-- Leaderboard data will be inserted here -->
+                    </div>
+                </div>
+                
+                <div class="leaderboard-stats">
+                    <div class="stat-card">
+                        <h4>Your Best Score</h4>
+                        <span class="your-score neon-text">0</span>
+                        <small>Current Rank: #--</small>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h4>Games Played</h4>
+                        <span class="games-played neon-text">0</span>
+                        <small>This Month</small>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h4>Total Players</h4>
+                        <span class="total-players neon-text">11,790</span>
+                        <small>Online Now</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Modal for Fullscreen Play -->
+    <div class="game-modal" id="game-modal">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-game-title">Game Title</h4>
+            <div class="modal-controls">
+                <button class="modal-button favorite-button" id="favorite-btn">♡</button>
+                <button class="modal-button share-button" id="share-btn">SHARE</button>
+                <button class="modal-button close-button" id="close-modal">✕</button>
+            </div>
+        </div>
+        
+        <div class="modal-content">
+            <iframe id="game-iframe" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+        
+        <div class="modal-footer">
+            <div class="game-rating-section">
+                <span>Rate this game:</span>
+                <div class="star-rating" id="star-rating">
+                    <span class="star" data-rating="1">☆</span>
+                    <span class="star" data-rating="2">☆</span>
+                    <span class="star" data-rating="3">☆</span>
+                    <span class="star" data-rating="4">☆</span>
+                    <span class="star" data-rating="5">☆</span>
+                </div>
+            </div>
+            
+            <div class="like-section">
+                <button class="like-button" id="like-btn">👍 LIKE</button>
+                <span class="like-count" id="like-count">0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 class="footer-title">NEO ARCADE</h4>
+                <p class="footer-text">Bringing back the golden age of arcade gaming with modern technology</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4 class="footer-title">QUICK LINKS</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#games">Games</a></li>
+                    <li><a href="#favorites">Favorites</a></li>
+                    <li><a href="#leaderboard">Leaderboard</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4 class="footer-title">SOCIAL</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link">FACEBOOK</a>
+                    <a href="#" class="social-link">TWITTER</a>
+                    <a href="#" class="social-link">DISCORD</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Neo Arcade. All rights reserved. | Made with ❤️ for retro gaming enthusiasts</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/games.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/effects.js"></script>
+</body>
+</html> 

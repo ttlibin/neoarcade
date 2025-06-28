@@ -1,0 +1,580 @@
+/* ============================================
+   NEO ARCADE - RESPONSIVE DESIGN
+   ============================================ */
+
+/* ============================================
+   MOBILE FIRST BREAKPOINTS
+   ============================================ */
+
+/* Extra Small Devices (phones, 480px and down) */
+@media screen and (max-width: 480px) {
+  
+  /* Header Adjustments */
+  .header {
+    padding: var(--spacing-xs) 0;
+  }
+  
+  .nav-container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .logo-text {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+  }
+  
+  .logo-subtitle {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+  }
+  
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(15px);
+    flex-direction: column;
+    padding: var(--spacing-md);
+    border-top: 2px solid var(--neon-purple);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  .nav-menu.active {
+    display: flex;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  /* Hero Section Mobile - 修复字体超出问题 */
+  .hero {
+    min-height: 90vh;
+    padding: var(--spacing-lg) var(--spacing-sm);
+    overflow-x: hidden; /* 防止水平滚动 */
+  }
+  
+  .hero-title {
+    font-size: 1rem; /* 进一步减小到1rem确保完全显示 */
+    letter-spacing: 0.3px; /* 进一步减少字符间距 */
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2; /* 减少行高节省空间 */
+    word-wrap: break-word; /* 强制换行 */
+    word-break: break-word; /* 强制单词断行 */
+    text-align: center;
+    max-width: 95%; /* 进一步减少最大宽度 */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2px; /* 减少内边距 */
+    white-space: normal; /* 允许换行 */
+    overflow-wrap: break-word; /* 确保长单词可以换行 */
+    display: block; /* 确保是块级元素 */
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem; /* 调整副标题字体 */
+    margin-bottom: var(--spacing-md);
+    line-height: 1.4;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+  
+  .cta-button {
+    font-size: 0.9rem; /* 调整按钮字体 */
+    padding: var(--spacing-sm) var(--spacing-md);
+    letter-spacing: 1px;
+    white-space: nowrap; /* 防止按钮文字换行 */
+  }
+  
+  .hero-stats {
+    gap: var(--spacing-sm); /* 减少间距 */
+    margin-top: var(--spacing-lg);
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: center;
+  }
+  
+  .stat-item {
+    min-width: 80px; /* 减少最小宽度 */
+    padding: var(--spacing-xs);
+    flex: 1;
+    max-width: 120px; /* 限制最大宽度 */
+  }
+  
+  .stat-number {
+    font-size: 1.3rem; /* 调整数字大小 */
+  }
+  
+  .stat-label {
+    font-size: 0.75rem; /* 调整标签大小 */
+  }
+  
+  /* Game Controls Mobile */
+  .controls-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+  
+  .search-section {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .search-input {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .filter-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-xs);
+  }
+  
+  .filter-select {
+    width: 100%;
+  }
+  
+  /* Games Grid Mobile */
+  .games-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    justify-content: center;
+  }
+  
+  .game-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+  
+  /* Game Modal Mobile */
+  .modal-header {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
+  }
+  
+  .modal-title {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+  
+  .modal-content {
+    padding: var(--spacing-sm);
+  }
+  
+  .modal-content iframe {
+    max-height: 400px;
+    border-width: 1px;
+  }
+  
+  .modal-footer {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
+  }
+  
+  .star-rating {
+    justify-content: center;
+  }
+  
+  .star {
+    font-size: 1.3rem;
+  }
+  
+  /* Footer Mobile */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    text-align: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   SMALL DEVICES (tablets, 768px and down)
+   ============================================ */
+
+@media screen and (max-width: 768px) {
+  
+  /* Navigation */
+  .nav-menu {
+    gap: var(--spacing-md);
+  }
+  
+  .nav-link {
+    padding: var(--spacing-sm);
+    text-align: center;
+    border-width: 2px;
+  }
+  
+  /* Hero Section */
+  .hero-title {
+    font-size: clamp(1.4rem, 4vw, 2.2rem); /* 使用更保守的clamp值 */
+    letter-spacing: 1px; /* 减少字间距 */
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+  
+  .hero-stats {
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .stat-item {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  /* Games Grid */
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    justify-content: center;
+  }
+  
+  .game-card {
+    margin: 0 auto;
+    max-width: 380px;
+  }
+  
+  /* Game Controls */
+  .controls-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .filter-section {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Modal Adjustments */
+  .modal-content iframe {
+    max-width: 90vw;
+    max-height: 50vh;
+  }
+}
+
+/* ============================================
+   MEDIUM DEVICES (small laptops, 992px and down)
+   ============================================ */
+
+@media screen and (max-width: 992px) {
+  
+  /* Hide mobile menu toggle on larger screens */
+  .mobile-menu-toggle {
+    display: none;
+  }
+  
+  .nav-menu {
+    display: flex;
+  }
+  
+  /* Games Grid */
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    justify-content: center;
+  }
+  
+  /* Hero Section */
+  .hero-stats {
+    gap: var(--spacing-lg);
+  }
+  
+  .stat-item {
+    min-width: 140px;
+  }
+  
+  /* Modal */
+  .modal-content iframe {
+    max-width: 800px;
+    max-height: 500px;
+  }
+}
+
+/* ============================================
+   LARGE DEVICES (desktops, 1200px and up)
+   ============================================ */
+
+@media screen and (min-width: 1200px) {
+  
+  /* Container max-width */
+  .nav-container,
+  .controls-container,
+  .games-section,
+  .footer-content {
+    max-width: 1400px;
+  }
+  
+  /* Games Grid */
+  .games-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+    justify-content: center;
+  }
+  
+  /* Hero Section */
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+  }
+  
+  .hero-stats {
+    gap: var(--spacing-xl);
+  }
+  
+  .stat-item {
+    min-width: 160px;
+    padding: var(--spacing-lg);
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+  }
+  
+  /* Enhanced hover effects for larger screens */
+  .game-card:hover {
+    transform: translateY(-8px);
+  }
+  
+  .neon-button:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* ============================================
+   EXTRA LARGE DEVICES (large desktops, 1400px and up)
+   ============================================ */
+
+@media screen and (min-width: 1400px) {
+  
+  /* Increase base font size for readability */
+  html {
+    font-size: 18px;
+  }
+  
+  /* Container max-width */
+  .nav-container,
+  .controls-container,
+  .games-section,
+  .footer-content {
+    max-width: 1600px;
+  }
+  
+  /* Games Grid */
+  .games-grid {
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+  }
+  
+  /* Game Card */
+  .game-thumbnail {
+    height: 240px;
+  }
+  
+  /* Modal */
+  .modal-content iframe {
+    max-width: 1200px;
+    max-height: 700px;
+  }
+}
+
+/* ============================================
+   LANDSCAPE ORIENTATION ADJUSTMENTS
+   ============================================ */
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  
+  /* Reduce hero height in landscape */
+  .hero {
+    min-height: 100vh;
+    padding: var(--spacing-md) var(--spacing-md);
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .hero-subtitle {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .hero-stats {
+    flex-direction: row;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+  }
+  
+  .stat-item {
+    min-width: 100px;
+    padding: var(--spacing-sm);
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+}
+
+/* ============================================
+   HIGH DPI DISPLAYS (RETINA)
+   ============================================ */
+
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (min-resolution: 192dpi) {
+  
+  /* Enhance neon effects for high DPI */
+  .neon-text {
+    text-shadow: 
+      0 0 2px currentColor,
+      0 0 5px currentColor,
+      0 0 8px currentColor,
+      0 0 12px var(--neon-pink),
+      0 0 20px var(--neon-pink),
+      0 0 25px var(--neon-pink),
+      0 0 30px var(--neon-pink),
+      0 0 40px var(--neon-pink);
+  }
+  
+  .neon-button {
+    box-shadow: 
+      0 0 5px var(--neon-pink),
+      0 0 10px var(--neon-pink),
+      inset 0 0 5px rgba(255, 20, 147, 0.1);
+  }
+  
+  .neon-button:hover {
+    box-shadow: 
+      0 0 10px var(--neon-pink),
+      0 0 20px var(--neon-pink),
+      0 0 30px var(--neon-pink),
+      inset 0 0 10px rgba(255, 20, 147, 0.2);
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  
+  /* Hide non-essential elements */
+  .header,
+  .game-controls,
+  .modal-button,
+  .like-button,
+  .star-rating,
+  .social-links {
+    display: none !important;
+  }
+  
+  /* Simplify colors for print */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .game-card {
+    border: 1px solid #333 !important;
+    background: white !important;
+    box-shadow: none !important;
+  }
+  
+  .game-title,
+  .section-title,
+  .footer-title {
+    color: black !important;
+    text-shadow: none !important;
+  }
+  
+  /* Remove animations */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .grid-background {
+    animation: none;
+  }
+  
+  .neon-text {
+    animation: none;
+  }
+  
+  .loading-placeholder::before {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  
+  :root {
+    --neon-pink: #ff69b4;
+    --neon-cyan: #00ffff;
+    --neon-purple: #da70d6;
+    --neon-green: #00ff00;
+    --text-secondary: #ffffff;
+    --text-muted: #cccccc;
+  }
+  
+  .game-card {
+    border-width: 3px;
+  }
+  
+  .neon-button {
+    border-width: 3px;
+  }
+}
+
+/* Dark mode detection and enhancement */
+@media (prefers-color-scheme: dark) {
+  
+  /* Already optimized for dark mode */
+  /* Could add additional dark mode enhancements here */
+  
+}
+
+/* Light mode fallback (if user specifically requests it) */
+@media (prefers-color-scheme: light) {
+  
+  /* Optional: Provide light mode variant */
+  /* For now, keeping the dark theme as it's core to the modern retro aesthetic */
+  
+} 
